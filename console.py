@@ -190,10 +190,9 @@ class HBNBCommand(cmd.Cmd):
     def default(self, line):
         if line is None:
             return
-
-        cmdPattern = "^([A-Za-z]+)\.([a-z]+)\(([^(]*)\)"
-        paramsPattern = """^"([^"]+)"(?:,\s*(?:"([^"]+)"|(\{[^}]+\}))(?:,\s*(?:("?[^"]+"?)))?)?"""
-        m = re.match(cmdPattern, line)
+	cmdPattern = "^([A-Za-z]+)\\.([a-z]+)\\(([^()]*)\\)"
+	paramsPattern = r"""^"([^"]+)"(?:,\s*(?:"([^"]+)"|(\{[^}]+\}))(?:,\s*(?:("?[^"]+"?)))?)?"""
+	m = re.match(cmdPattern, line)
         if not m:
             super().default(line)
             return
@@ -221,4 +220,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-
